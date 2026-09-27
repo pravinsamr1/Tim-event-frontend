@@ -38,6 +38,35 @@
 @media (max-width: 900px) {
   .success-layout {
     grid-template-columns: 1fr;
+    gap: var(--sp-5);
+  }
+  .success-layout .pass-card {
+    order: -1;
+  }
+  .success-actions {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+}
+
+@media (max-width: 640px) {
+  .success-page,
+  .status-page {
+    padding-block: var(--sp-5) var(--sp-7);
+  }
+  .success-banner {
+    padding: var(--sp-3) var(--sp-4);
+    font-size: var(--fs-small);
+  }
+  .pass-card {
+    padding: var(--sp-5) var(--sp-4);
+  }
+  .pass-qr-wrap {
+    padding: var(--sp-3);
+    margin: var(--sp-4) 0;
+  }
+  .status-form {
+    max-width: 100%;
   }
 }
 
@@ -158,3 +187,44 @@
   background: var(--brick-tint);
   color: #6f2c20;
 }
+
+/* ---------- Print media for saving passes ---------- */
+@media print {
+  .navbar,
+  .site-footer,
+  .reg-back,
+  .success-actions,
+  .success-banner,
+  .skip-link {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+  }
+  .success-page {
+    padding: 0 !important;
+    min-height: auto !important;
+  }
+  .pass-card {
+    box-shadow: none !important;
+    border: 2px solid #1b3a5c !important;
+    color: #141b22 !important;
+    background: #fff !important;
+  }
+  .pass-card::before {
+    display: none !important;
+  }
+  .pass-event-name,
+  .pass-type,
+  .pass-field .pf-label,
+  .pass-field .pf-value {
+    color: #141b22 !important;
+  }
+  .pass-field {
+    border-bottom: 1px solid #ddd !important;
+  }
+  .pass-qr-wrap {
+    border: 1px solid #ddd;
+  }
+}
+

@@ -34,6 +34,7 @@ export default function Hero() {
       </div>
 
       <div className="hero-content container hero-content-center">
+        <span className="hero-eyebrow">{EVENT.fullName}</span>
         <h1 className="hero-animated-heading">
           {words.map((word, i) => {
             const isAccent = word.toLowerCase().replace(/[^a-z]/g, "") === "future";
@@ -49,6 +50,14 @@ export default function Hero() {
             );
           })}
         </h1>
+        <div className="hero-quick-meta">
+          <p className="hero-meta-badge">
+            📅 {EVENT.dateRange} &nbsp;·&nbsp; 📍 {EVENT.venue.split(",")[0]}
+          </p>
+          <a href="#about" className="btn btn-gold hero-cta-btn">
+            View Passes &amp; Register &darr;
+          </a>
+        </div>
       </div>
     </section>
   );

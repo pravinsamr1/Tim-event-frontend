@@ -41,6 +41,7 @@
 @media (max-width: 900px) {
   .reg-layout {
     grid-template-columns: 1fr;
+    gap: var(--sp-5);
   }
 }
 
@@ -49,6 +50,33 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: var(--sp-6);
+}
+
+@media (max-width: 640px) {
+  .reg-page {
+    padding-block: var(--sp-5) var(--sp-7);
+  }
+  .reg-back {
+    min-height: 44px;
+    margin-bottom: var(--sp-3);
+  }
+  .reg-header {
+    margin-bottom: var(--sp-5);
+  }
+  .reg-header h1 {
+    font-size: 1.6rem;
+  }
+  .reg-header .reg-price {
+    font-size: 1.85rem;
+    margin: var(--sp-1) 0;
+  }
+  .reg-card {
+    padding: var(--sp-4);
+    border-radius: var(--radius-md);
+  }
+  .day-option {
+    padding: var(--sp-3) var(--sp-3);
+  }
 }
 
 .reg-card h2 {
@@ -62,6 +90,17 @@
   margin-bottom: var(--sp-7);
   list-style: none;
   padding: 0;
+}
+
+@media (max-width: 480px) {
+  .reg-progress {
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-5);
+  }
+  .reg-progress li {
+    font-size: 0.72rem;
+    padding-top: var(--sp-1);
+  }
 }
 
 .reg-progress li {
@@ -111,6 +150,13 @@
   border-radius: var(--radius-md);
   padding: var(--sp-4);
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.1s ease;
+}
+
+.day-option:active {
+  transform: scale(0.99);
 }
 
 .day-option:has(input:checked) {

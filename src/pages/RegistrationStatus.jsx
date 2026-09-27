@@ -6,7 +6,6 @@ import Loader from "../components/common/Loader";
 import ErrorMessage from "../components/common/ErrorMessage";
 import { getRegistrationStatus } from "../services/registrationService";
 import { dayLabel } from "../config/plans";
-import { useEffect } from "react";
 
 export default function RegistrationStatus() {
   const [form, setForm] = useState({ registrationId: "", mobile: "" });
@@ -28,10 +27,6 @@ export default function RegistrationStatus() {
       setLoading(false);
     }
   }
-
-  useEffect(() => {
-    window.scrollTo(0,0);
-  })
 
   return (
     <section className="status-page">

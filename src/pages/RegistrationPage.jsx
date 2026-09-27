@@ -8,7 +8,6 @@ import RegistrationProgress from "../components/registration/RegistrationProgres
 import { useRegistration, FLOW_STATES } from "../hooks/useRegistration";
 import { validatePersonalDetails, hasErrors } from "../utils/validation";
 import { PLAN_TYPES } from "../config/plans";
-import { useEffect } from "react";
 
 const EMPTY_DETAILS = {
   fullName: "",
@@ -72,13 +71,20 @@ export default function RegistrationPage({ plan }) {
       validationErrors.day = "Choose Day 1 or Day 2.";
     }
     setErrors(validationErrors);
-    if (hasErrors(validationErrors)) return;
+    if (hasErrors(validationErrors)) {
+      const firstErrorField = Object.keys(validationErrors)[0];
+      const targetElement =
+        firstErrorField === "day"
+          ? document.querySelector(".day-options") || document.querySelector(".day-selector-legend")
+          : document.getElementById(firstErrorField);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (targetElement.focus) targetElement.focus();
+      }
+      return;
+    }
     submit(details);
   }
-
-  useEffect(() => {
-    window.scrollTo(0,0);
-  })
 
   const activeStep = flowState === FLOW_STATES.IDLE ? 0 : flowState === FLOW_STATES.PAYMENT_SUCCESS ? 2 : 1;
 

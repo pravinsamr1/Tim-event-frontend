@@ -69,10 +69,6 @@ export default function RegistrationSuccess() {
     );
   }
 
-  useEffect(() => {
-    window.scrollTo(0,0);
-  })
-
   const isTwoDay = registration.plan === PLAN_TYPES.TWO_DAY;
 
   return (
@@ -110,16 +106,23 @@ export default function RegistrationSuccess() {
               <div className="summary-row">
                 <span className="label">Payment</span>
                 <span className="value">
-                  {formatRupees(isTwoDay ? 250 : 150)} — PAID
+                  {formatRupees(registration.amount || (isTwoDay ? 250 : 150))} — PAID
                 </span>
               </div>
             </div>
 
             <div className="success-actions">
-              <Link to="/" className="btn btn-outline">
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="btn btn-gold btn-block"
+              >
+                📥 Save / Print Pass
+              </button>
+              <Link to="/" className="btn btn-outline btn-block">
                 Back to home
               </Link>
-              <Link to="/registration/status" className="btn btn-outline">
+              <Link to="/registration/status" className="btn btn-outline btn-block">
                 Check status later
               </Link>
             </div>
@@ -132,6 +135,7 @@ export default function RegistrationSuccess() {
               plan: registration.plan,
               selectedDay: registration.selectedDay,
               qrToken: registration.qrToken,
+              passId: registration.passId,
             }}
           />
         </div>

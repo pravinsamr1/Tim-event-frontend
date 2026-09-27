@@ -1,0 +1,160 @@
+.success-page,
+.status-page {
+  padding-block: var(--sp-7) var(--sp-9);
+  min-height: 70vh;
+}
+
+.success-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  background: var(--teal-tint);
+  color: #1d4a3d;
+  border: 1px solid rgba(47, 111, 94, 0.3);
+  padding: var(--sp-4) var(--sp-5);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  margin-bottom: var(--sp-6);
+}
+
+.success-check {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: white;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.success-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-7);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .success-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.success-details .reg-card {
+  margin-bottom: var(--sp-5);
+}
+
+.success-actions {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+/* ---------- Event pass card ---------- */
+.pass-card {
+  background: var(--navy);
+  color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow-raised);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 60% at 0% 0%, rgba(176, 141, 61, 0.28), transparent 60%);
+}
+
+.pass-content {
+  position: relative;
+}
+
+.pass-event-name {
+  font-size: var(--fs-micro);
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: var(--sp-2);
+}
+
+.pass-type {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: var(--sp-5);
+}
+
+.pass-field {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--sp-2) 0;
+  border-bottom: 1px solid rgba(255,255,255,0.16);
+  font-size: var(--fs-small);
+  text-align: left;
+}
+
+.pass-field .pf-label {
+  color: rgba(255,255,255,0.65);
+}
+
+.pass-field .pf-value {
+  font-weight: 700;
+}
+
+.pass-qr-wrap {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--sp-5);
+  margin: var(--sp-5) 0;
+  display: inline-flex;
+}
+
+.pass-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--teal);
+  color: white;
+  font-weight: 700;
+  font-size: var(--fs-small);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+}
+
+/* ---------- Status lookup page ---------- */
+.status-form {
+  max-width: 420px;
+}
+
+.status-result {
+  margin-top: var(--sp-6);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-weight: 700;
+  font-size: var(--fs-small);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+}
+
+.status-pill.paid {
+  background: var(--teal-tint);
+  color: #1d4a3d;
+}
+
+.status-pill.pending {
+  background: var(--gold-tint);
+  color: var(--gold-deep);
+}
+
+.status-pill.failed {
+  background: var(--brick-tint);
+  color: #6f2c20;
+}

@@ -1,0 +1,54 @@
+:root {
+  /* Color — deep ink/navy for trust, a single restrained antique-gold
+     accent reserved for the one or two moments that need it (primary CTA,
+     the pass), warm paper background rather than stark white or cream. */
+  --ink: #141b22;
+  --ink-soft: #47525c;
+  --paper: #f8f7f3;
+  --paper-raised: #ffffff;
+  --line: #e2ded3;
+  --line-strong: #cdc7b7;
+  --navy: #1b3a5c;
+  --navy-deep: #12283f;
+  --navy-tint: #eaf0f5;
+  --gold: #b08d3d;
+  --gold-deep: #8f7128;
+  --gold-tint: #f6efdd;
+  --teal: #2f6f5e;
+  --teal-tint: #e6f1ed;
+  --brick: #a6402f;
+  --brick-tint: #f7e9e5;
+
+  /* Type */
+  --font-display: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  --font-body: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+
+  --fs-hero: clamp(2.4rem, 5vw + 1rem, 4.2rem);
+  --fs-h1: clamp(1.9rem, 2.6vw + 1rem, 2.75rem);
+  --fs-h2: clamp(1.5rem, 1.6vw + 1rem, 2rem);
+  --fs-h3: 1.2rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
+
+  /* Spacing scale */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4.5rem;
+  --sp-9: 6rem;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-card: 0 1px 2px rgba(20, 27, 34, 0.06), 0 8px 24px -12px rgba(20, 27, 34, 0.18);
+  --shadow-raised: 0 4px 10px rgba(20, 27, 34, 0.08), 0 20px 40px -16px rgba(20, 27, 34, 0.28);
+
+  --container: 1320px;
+  --focus-ring: 0 0 0 3px rgba(27, 58, 92, 0.35);
+}

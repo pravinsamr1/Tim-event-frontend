@@ -22,7 +22,15 @@ export default function RegistrationSuccess() {
     setLoading(true);
     getRegistration(rid)
       .then((data) => {
-        if (!cancelled) setRegistration({ registrationId: rid, ...data });
+        if (!cancelled) {
+          const payload = data?.data || data;
+          setRegistration({
+            registrationId: rid,
+            ...payload,
+            qrToken: payload.qrToken || payload.passId || payload.qrTokenHash || rid,
+            passId: payload.passId,
+          });
+        }
       })
       .catch((err) => {
         if (!cancelled) setError(err?.message || "Could not load your registration.");
@@ -79,6 +87,12 @@ export default function RegistrationSuccess() {
                 <span className="label">Registration ID</span>
                 <span className="value">{registration.registrationId}</span>
               </div>
+              {registration.passId && (
+                <div className="summary-row">
+                  <span className="label">Pass ID</span>
+                  <span className="value">{registration.passId}</span>
+                </div>
+              )}
               <div className="summary-row">
                 <span className="label">Pass</span>
                 <span className="value">{isTwoDay ? "2-Day Pass" : "1-Day Pass"}</span>

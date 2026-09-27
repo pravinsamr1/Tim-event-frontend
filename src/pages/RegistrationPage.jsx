@@ -48,6 +48,7 @@ export default function RegistrationPage({ plan }) {
               plan: plan.type,
               selectedDay,
               qrToken: registration.qrToken,
+              passId: registration.passId,
             },
           }),
         900

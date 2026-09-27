@@ -1,9 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { EVENT, NAV_LINKS } from "../../config/eventConfig";
+import { EVENT } from "../../config/eventConfig";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
 
   return (
     <header className="navbar">

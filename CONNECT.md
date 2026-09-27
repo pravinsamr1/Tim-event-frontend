@@ -55,7 +55,7 @@ VITE_API_BASE_URL=http://localhost:5001/api
 VITE_USE_MOCKS=false
 
 # Public Razorpay Test Key ID (never put secret keys here!)
-VITE_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxx
+VITE_RAZORPAY_KEY_ID=rzp_test_Th1MLkFYaYiVFl
 ```
 
 ---
@@ -139,7 +139,7 @@ VITE_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxx
   "orderId": "order_Qz1234567890",
   "amount": 15000,
   "currency": "INR",
-  "keyId": "rzp_test_xxxxxxxxx"
+  "keyId": "rzp_test_Th1MLkFYaYiVFl"
 }
 ```
 

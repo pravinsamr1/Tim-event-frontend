@@ -33,7 +33,7 @@ export async function createRegistration(payload) {
     };
   }
   const { data } = await api.post("/registrations", payload);
-  return data;
+  return data?.data ? { ...data.data, ...data } : data;
 }
 
 /**
@@ -55,7 +55,7 @@ export async function getRegistration(registrationId) {
     };
   }
   const { data } = await api.get(`/registrations/${registrationId}`);
-  return data;
+  return data?.data ? { ...data.data, ...data } : data;
 }
 
 /**
@@ -80,7 +80,10 @@ export async function getRegistrationStatus({ registrationId, mobile }) {
     return { found: false };
   }
   const { data } = await api.get("/registrations/status", {
-    params: { registrationId, mobile },
+    params: {
+      registrationId: registrationId?.trim()?.toUpperCase(),
+      mobile: mobile?.trim(),
+    },
   });
-  return data;
+  return data?.data ? { ...data.data, ...data } : data;
 }

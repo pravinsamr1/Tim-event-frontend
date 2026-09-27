@@ -44,7 +44,7 @@ export async function createPaymentOrder({ registrationId }) {
     };
   }
   const { data } = await api.post("/payments/order", { registrationId });
-  return data;
+  return data?.data ? { ...data.data, ...data } : data;
 }
 
 /**
@@ -66,5 +66,5 @@ export async function verifyPayment({ registrationId, razorpayResponse }) {
     registrationId,
     razorpayResponse,
   });
-  return data;
+  return data?.data ? { ...data.data, ...data } : data;
 }

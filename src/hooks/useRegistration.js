@@ -55,14 +55,16 @@ export function useRegistration({ plan, selectedDay, onConfirmed }) {
         setFlowState(FLOW_STATES.PAYMENT_PENDING);
 
         const options = {
-          key: order.keyId,
-          order_id: order.orderId,
+          key: order.keyId || import.meta.env.VITE_RAZORPAY_KEY_ID,
+          order_id: order.orderId || order.id,
+          amount: order.amount,
+          currency: order.currency || "INR",
           name: EVENT.name,
           description: `${plan.label} registration`,
           prefill: {
-            name: registration.details?.fullName,
-            email: registration.details?.email,
-            contact: registration.details?.mobile,
+            name: registration.details?.fullName || registration.fullName,
+            email: registration.details?.email || registration.email,
+            contact: registration.details?.mobile || registration.mobile,
           },
           theme: { color: "#1b3a5c" },
           handler: async (razorpayResponse) => {
@@ -74,7 +76,12 @@ export function useRegistration({ plan, selectedDay, onConfirmed }) {
               });
               if (result.verified) {
                 setFlowState(FLOW_STATES.PAYMENT_SUCCESS);
-                onConfirmed?.({ ...registration, ...result });
+                onConfirmed?.({
+                  ...registration,
+                  ...result,
+                  qrToken: result.qrToken || result.passId || registration.qrToken,
+                  passId: result.passId,
+                });
               } else {
                 setFlowState(FLOW_STATES.VERIFICATION_FAILED);
               }
@@ -95,8 +102,9 @@ export function useRegistration({ plan, selectedDay, onConfirmed }) {
 
         if (window.Razorpay) {
           const checkout = new window.Razorpay(options);
-          checkout.on?.("payment.failed", () => {
+          checkout.on?.("payment.failed", (res) => {
             setFlowState(FLOW_STATES.PAYMENT_FAILED);
+            setErrorMessage(res?.error?.description || "Payment was not completed.");
           });
           checkout.open();
         } else {

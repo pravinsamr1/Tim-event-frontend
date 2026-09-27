@@ -91,7 +91,9 @@ export default function RegistrationStatus() {
             </p>
             <div className="summary-row">
               <span className="label">Pass type</span>
-              <span className="value">{result.planLabel}</span>
+              <span className="value">
+                {result.planLabel || (result.plan === "TWO_DAY" ? "2-Day Pass" : "1-Day Pass")}
+              </span>
             </div>
             <div className="summary-row">
               <span className="label">Valid day</span>

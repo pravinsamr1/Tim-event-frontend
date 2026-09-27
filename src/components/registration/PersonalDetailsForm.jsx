@@ -2,6 +2,10 @@ import Input from "../common/Input";
 
 export default function PersonalDetailsForm({ values, errors, onChange, disabled }) {
   const handle = (field) => (e) => onChange(field, e.target.value);
+  const handleMobile = (e) => {
+    const digitsOnly = e.target.value.replace(/\D/g, "").slice(0, 10);
+    onChange("mobile", digitsOnly);
+  };
 
   return (
     <div>
@@ -22,10 +26,11 @@ export default function PersonalDetailsForm({ values, errors, onChange, disabled
         required
         type="tel"
         inputMode="numeric"
+        maxLength={10}
         autoComplete="tel"
         placeholder="10-digit mobile number"
         value={values.mobile}
-        onChange={handle("mobile")}
+        onChange={handleMobile}
         error={errors.mobile}
         disabled={disabled}
       />

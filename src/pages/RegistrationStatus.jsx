@@ -55,8 +55,12 @@ export default function RegistrationStatus() {
             required
             type="tel"
             inputMode="numeric"
+            maxLength={10}
             value={form.mobile}
-            onChange={(e) => setForm((f) => ({ ...f, mobile: e.target.value }))}
+            onChange={(e) => {
+              const digitsOnly = e.target.value.replace(/\D/g, "").slice(0, 10);
+              setForm((f) => ({ ...f, mobile: digitsOnly }));
+            }}
             disabled={loading}
           />
           <Button type="submit" variant="primary" block loading={loading}>

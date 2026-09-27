@@ -8,6 +8,7 @@ import RegistrationProgress from "../components/registration/RegistrationProgres
 import { useRegistration, FLOW_STATES } from "../hooks/useRegistration";
 import { validatePersonalDetails, hasErrors } from "../utils/validation";
 import { PLAN_TYPES } from "../config/plans";
+import { useEffect } from "react";
 
 const EMPTY_DETAILS = {
   fullName: "",
@@ -74,6 +75,10 @@ export default function RegistrationPage({ plan }) {
     if (hasErrors(validationErrors)) return;
     submit(details);
   }
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  })
 
   const activeStep = flowState === FLOW_STATES.IDLE ? 0 : flowState === FLOW_STATES.PAYMENT_SUCCESS ? 2 : 1;
 

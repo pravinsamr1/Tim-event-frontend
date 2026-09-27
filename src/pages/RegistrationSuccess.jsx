@@ -69,6 +69,10 @@ export default function RegistrationSuccess() {
     );
   }
 
+  useEffect(() => {
+    window.scrollTo(0,0);
+  })
+
   const isTwoDay = registration.plan === PLAN_TYPES.TWO_DAY;
 
   return (
